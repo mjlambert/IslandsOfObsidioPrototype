@@ -8,6 +8,9 @@ public class EnemyUnit : MonoBehaviour {
     // Use this for initialization
     void Start () {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        NavMeshPath path = new NavMeshPath();
+        navMeshAgent.CalculatePath(GameObject.Find("SouthWestTrigger").GetComponent<Transform>().position, path);
+        navMeshAgent.SetPath(path);
     }
 	
 	// Update is called once per frame
