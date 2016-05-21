@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - EnemyUnits
+  - WaypointNW
+  - WaypointSW
+  - WaypointSE
+  - WaypointNE
+  - Waypoints
   layers:
   - Default
   - TransparentFX
