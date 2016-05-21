@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyUnit : MonoBehaviour {
+public class EnemyUnitController : MonoBehaviour {
 
     /*
     private NavMeshAgent navMeshAgent;
