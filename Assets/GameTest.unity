@@ -155,12 +155,13 @@ GameObject:
   m_Component:
   - 4: {fileID: 197012324}
   - 65: {fileID: 197012325}
+  - 114: {fileID: 197012326}
   m_Layer: 0
-  m_Name: NorthWestTrigger
-  m_TagString: WaypointNW
+  m_Name: NorthWestWaypoint
+  m_TagString: Waypoints
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &197012324
 Transform:
@@ -181,11 +182,23 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 197012323}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &197012326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 197012323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af992b8023eae6d469169a1964063a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  order: 1
 --- !u!1 &466351781
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,12 +369,13 @@ GameObject:
   m_Component:
   - 4: {fileID: 803636192}
   - 65: {fileID: 803636193}
+  - 114: {fileID: 803636194}
   m_Layer: 0
-  m_Name: SouthEastTrigger
-  m_TagString: WaypointSE
+  m_Name: SouthEastWaypoint
+  m_TagString: Waypoints
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &803636192
 Transform:
@@ -382,11 +396,23 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 803636191}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &803636194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 803636191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af992b8023eae6d469169a1964063a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  order: 3
 --- !u!1 &1029349440
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,12 +422,13 @@ GameObject:
   m_Component:
   - 4: {fileID: 1029349441}
   - 65: {fileID: 1029349442}
+  - 114: {fileID: 1029349443}
   m_Layer: 0
-  m_Name: NorthEastTrigger
-  m_TagString: WaypointNE
+  m_Name: NorthEastWaypoint
+  m_TagString: Waypoints
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1029349441
 Transform:
@@ -422,11 +449,23 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1029349440}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1029349443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1029349440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af992b8023eae6d469169a1964063a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  order: 4
 --- !u!1001 &1118126736
 Prefab:
   m_ObjectHideFlags: 0
@@ -444,7 +483,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400074, guid: be66986effd141b4992d2d78be127139, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -45
+      value: -55.14
       objectReference: {fileID: 0}
     - target: {fileID: 400074, guid: be66986effd141b4992d2d78be127139, type: 3}
       propertyPath: m_LocalRotation.x
@@ -501,7 +540,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1118126737}
   m_Enabled: 1
   m_Radius: 0.5
-  m_Speed: 3
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -561,12 +600,13 @@ GameObject:
   m_Component:
   - 4: {fileID: 2105308351}
   - 65: {fileID: 2105308352}
+  - 114: {fileID: 2105308353}
   m_Layer: 0
-  m_Name: SouthWestTrigger
-  m_TagString: WaypointSW
+  m_Name: SouthWestWaypoint
+  m_TagString: Waypoints
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2105308351
 Transform:
@@ -587,8 +627,20 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2105308350}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2105308353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2105308350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af992b8023eae6d469169a1964063a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  order: 2
