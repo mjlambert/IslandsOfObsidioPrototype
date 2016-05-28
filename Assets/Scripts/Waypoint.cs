@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Waypoint : MonoBehaviour {
 
     public int order;
+
+    private static Dictionary<int, Vector3> _waypointPositionCache = new Dictionary<int, Vector3>();
 
     // Use this for initialization
     void Start ()
@@ -19,14 +22,14 @@ public class Waypoint : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+        // Trigger enemy unit event
         if (other.tag == "EnemyUnits")
         {
             EnemyUnitController enemyUnitController;
             try
             {
                 enemyUnitController = other.GetComponentInParent<EnemyUnitController>();
-                Vector3 nextWaypointPosition = FindWaypointPosition(order + 1);
-                enemyUnitController.SetDestination(nextWaypointPosition);
+                enemyUnitController.OnWaypointEnter(order);
             }
             catch (UnityException exception)
             {
@@ -43,6 +46,12 @@ public class Waypoint : MonoBehaviour {
     /// <returns>Position of the waypoint.</returns>
     public static Vector3 FindWaypointPosition(int order)
     {   
+        // See if waypoint is in the cache
+        if (_waypointPositionCache.ContainsKey(order))
+        {
+            return _waypointPositionCache[order];
+        }
+        
         // Search for waypoints
         foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Waypoints"))
         {
@@ -61,7 +70,9 @@ public class Waypoint : MonoBehaviour {
             // If waypoint matches the order, return its position
             if (waypointScript != null && waypointScript.order == order)
             {
-                return gameObject.GetComponent<Transform>().position;
+                Vector3 waypointPosition = gameObject.GetComponent<Transform>().position;
+                _waypointPositionCache.Add(order, waypointPosition);
+                return waypointPosition;
             }
         }
 
