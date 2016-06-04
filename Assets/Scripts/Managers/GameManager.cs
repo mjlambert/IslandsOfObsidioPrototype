@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour {
             { new Vector3(spawnOrigin.x - 2, spawnOrigin.y, spawnOrigin.z) }
         };
 
-        int numberOfUnitsPerWave = 5;
+        int numberOfUnitsPerWave = 1;
 
         for (int i = 0; i < numberOfUnitsPerWave; i++)
         {

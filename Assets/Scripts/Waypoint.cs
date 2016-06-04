@@ -8,18 +8,6 @@ public class Waypoint : MonoBehaviour {
 
     private static Dictionary<int, Vector3> _waypointPositionCache = new Dictionary<int, Vector3>();
 
-    // Use this for initialization
-    void Start ()
-    {
-
-    }
-	
-	// Update is called once per frame
-	void Update ()
-    {
-	
-	}
-
     void OnTriggerEnter(Collider other)
     {
         // Trigger enemy unit event

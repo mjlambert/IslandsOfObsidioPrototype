@@ -15,9 +15,10 @@ public class ShootEnemy : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        //empty list on start
+        
+        
+        //initializing targetting
         enemiesInRange = new List<GameObject>();
-
         target = null;
         lookRotation = new Quaternion();
         direction = new Vector3();
@@ -37,7 +38,7 @@ public class ShootEnemy : MonoBehaviour {
         {
             enemiesInRange.Add(other.gameObject);
 
-            target = other.gameObject;    
+            //target = other.gameObject; //just to have a target Change to last in list   
         }
     }
 
@@ -46,24 +47,34 @@ public class ShootEnemy : MonoBehaviour {
     {
         if (other.gameObject.tag.Equals("EnemyUnits"))
         {
-            enemiesInRange.Remove(other.gameObject);
+            if (other.gameObject == target)
+            {
+                enemiesInRange.Remove(other.gameObject);
 
-            target = null;
+                Behaviour halo = (Behaviour)target.GetComponent("Halo");
+                halo.enabled = false;
+                target = null;
+            }
         }
     }
 
 	// Update is called once per frame
 	void Update ()
     {
+        if (target == null && enemiesInRange.Count > 0)
+        {
+            target = enemiesInRange[enemiesInRange.Count - 1];
 
-        //Vector3 direction = gameObject.transform.position - target.transform.position;
-        //gameObject.transform.rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.z, direction.x) * 180 / Mathf.PI, new Vector3(0, 1, 0));
+            Behaviour halo = (Behaviour)target.GetComponent("Halo");
+            halo.enabled = true;
 
-        direction = (target.transform.position - gameObject.transform.position).normalized;
+            //animation too look nice
+            direction = (target.transform.position - gameObject.transform.position).normalized;
 
-        lookRotation = Quaternion.LookRotation(direction);
+            lookRotation = Quaternion.LookRotation(direction);
 
-        gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * RotationSpeed);
+            gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * RotationSpeed);
+        }
         
     }
 }

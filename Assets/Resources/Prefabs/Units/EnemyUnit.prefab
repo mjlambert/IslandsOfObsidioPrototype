@@ -29,6 +29,7 @@ GameObject:
   - 195: {fileID: 19563982}
   - 136: {fileID: 13685712}
   - 114: {fileID: 11469228}
+  - 122: {fileID: 12205580}
   m_Layer: 0
   m_Name: EnemyUnit
   m_TagString: EnemyUnits
@@ -104,6 +105,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6684b4aa3f1f0ee40a591ace82bd1000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!122 &12205580
+Halo:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 133180}
+  m_Enabled: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278452415
+  m_Size: 2
 --- !u!136 &13685712
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -29,4 +29,13 @@ public class EnemyUnitController : MonoBehaviour {
     {
         navMeshAgent.SetDestination(target);
     }
+
+    /// <summary>
+    /// Damage Enemy Unit
+    /// </summary>
+    /// <param name="damage">Amount of Damage</param>
+    public void DamageUnit(float damage)
+    {
+
+    }
 }
