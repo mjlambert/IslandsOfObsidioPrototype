@@ -12,4 +12,9 @@ public class EnemyUnitManager : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    void SpawnEnemyUnit(Vector3 position)
+    {
+        Instantiate(Resources.Load(@"Prefabs/Units/EnemyUnit"), position, Quaternion.identity);
+    }
 }
