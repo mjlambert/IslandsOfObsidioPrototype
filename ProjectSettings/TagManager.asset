@@ -6,6 +6,7 @@ TagManager:
   tags:
   - EnemyUnits
   - Waypoints
+  - GameUI
   layers:
   - Default
   - TransparentFX

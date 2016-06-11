@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemyUnitController : MonoBehaviour {
 
-    NavMeshAgent navMeshAgent;
+    private NavMeshAgent navMeshAgent;
 
     void Start()
     {
