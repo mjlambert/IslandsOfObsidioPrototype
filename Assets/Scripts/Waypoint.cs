@@ -13,17 +13,15 @@ public class Waypoint : MonoBehaviour {
         // Trigger enemy unit event
         if (other.tag == "EnemyUnits")
         {
-            EnemyUnitController enemyUnitController;
-            try
+            EnemyUnitController enemyUnitController = other.GetComponentInParent<EnemyUnitController>();
+            if (enemyUnitController == null)
             {
-                enemyUnitController = other.GetComponentInParent<EnemyUnitController>();
-                enemyUnitController.OnWaypointEnter(order);
+                Debug.LogError(
+                    string.Format("No Enemy Unit Controller script found. This object[{0}] should not have the 'EnemyUnits' tag.",
+                    gameObject.name)
+                );
             }
-            catch (UnityException exception)
-            {
-                // TODO: Probably should throw this exception
-                Debug.Log("No EnemyUnitController script found. This object should not have the 'EnemyUnits' tag. " + exception.Message);
-            }
+            enemyUnitController.OnWaypointEnter(order);
         }
     }
 
@@ -44,15 +42,13 @@ public class Waypoint : MonoBehaviour {
         foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Waypoints"))
         {
             // Try to get Waypoint script component
-            Waypoint waypointScript = null;
-            try
+            Waypoint waypointScript = gameObject.GetComponent<Waypoint>();
+            if (waypointScript == null)
             {
-                waypointScript = gameObject.GetComponent<Waypoint>();
-            }
-            catch (UnityException exception)
-            {
-                // TODO: Probably should throw this exception
-                Debug.Log("No Waypoint script found. This object should not have the 'Waypoints' tag. " + exception.Message);
+                Debug.LogError(
+                    string.Format("No Waypoint script found. This object[{0}] should not have the 'Waypoints' tag.",
+                    gameObject.name)
+                );
             }
 
             // If waypoint matches the order, return its position
