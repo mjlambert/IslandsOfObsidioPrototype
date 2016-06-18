@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 412120}
   - 137: {fileID: 13739280}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 435794}
   - 137: {fileID: 13742058}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,9 +43,13 @@ GameObject:
   - 95: {fileID: 9545168}
   - 135: {fileID: 13583796}
   - 114: {fileID: 11467448}
-  m_Layer: 2
+  - 122: {fileID: 12291300}
+  - 54: {fileID: 5419434}
+  - 136: {fileID: 13637322}
+  - 195: {fileID: 19541370}
+  m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: PlayerUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,7 +62,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 433970}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: GunBarrelEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,6 +120,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 408002}
   m_RootOrder: 2
+--- !u!54 &5419434
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184028}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
 --- !u!95 &9545168
 Animator:
   serializedVersion: 3
@@ -147,6 +166,17 @@ MonoBehaviour:
   enemiesInRange: []
   target: {fileID: 0}
   RotationSpeed: 2
+--- !u!122 &12291300
+Halo:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184028}
+  m_Enabled: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4292224771
+  m_Size: 2
 --- !u!135 &13583796
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -158,6 +188,19 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 15
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &13637322
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184028}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &13739280
 SkinnedMeshRenderer:
@@ -233,6 +276,26 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.32695428, y: 0.7558748, z: -0.11117928}
     m_Extent: {x: 0.6529361, y: 0.9034527, z: 0.59371823}
   m_DirtyAABB: 0
+--- !u!195 &19541370
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184028}
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.1
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
