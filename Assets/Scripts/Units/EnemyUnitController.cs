@@ -3,12 +3,22 @@ using System.Collections;
 
 public class EnemyUnitController : MonoBehaviour {
 
+    public float health;
+
     private NavMeshAgent navMeshAgent;
 
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         SetDestination(Waypoint.FindWaypointPosition(1));
+    }
+
+    void Update()
+    {
+        if (health <= 0)
+        {
+            KillUnit();
+        }
     }
 
     /// <summary>
@@ -36,6 +46,11 @@ public class EnemyUnitController : MonoBehaviour {
     /// <param name="damage">Amount of Damage</param>
     public void DamageUnit(float damage)
     {
+        health -= damage;
+    }
 
+    private void KillUnit()
+    {
+        Destroy(gameObject);
     }
 }

@@ -5,53 +5,52 @@ using System.Collections.Generic;
 public class PlayerUnitController : MonoBehaviour
 {
 
-    //To store enemies in range
-    public List<GameObject> enemiesInRange;
 
-    public GameObject target;
     public float RotationSpeed;
+    public float damagePerSecond;
+
+
+    //To store enemies in range
+    private List<GameObject> enemiesInRange;
+    private GameObject target;
     private Quaternion lookRotation;
     private Vector3 direction;
 
     // Use this for initialization
     void Start()
     {
-
-
-        //initializing targetting
+        // initializing targetting
         enemiesInRange = new List<GameObject>();
         target = null;
         lookRotation = new Quaternion();
         direction = new Vector3();
-
+        damagePerSecond = 20;
     }
 
-    //Remove enemy from enemiesInRange
+    // Remove enemy from enemiesInRange
     void OnEnemyDestroy(GameObject enemy)
     {
-        enemiesInRange.Remove(enemy);
+        
     }
 
-    //Add enemy to list of enemiesInRange on trigger enter
+    // Add enemy unit to the list when it enters the trigger
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag.Equals("EnemyUnits"))
         {
             enemiesInRange.Add(other.gameObject);
-
-            //target = other.gameObject; //just to have a target Change to last in list   
         }
     }
 
-    //Remove enemy from the list on trigger exit
+    //Remove enemy from the list when it leaves the trigger
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag.Equals("EnemyUnits"))
         {
+            enemiesInRange.Remove(other.gameObject);
+
             if (other.gameObject == target)
             {
-                enemiesInRange.Remove(other.gameObject);
-
                 Behaviour halo = (Behaviour)target.GetComponent("Halo");
                 halo.enabled = false;
                 target = null;
@@ -62,19 +61,41 @@ public class PlayerUnitController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target == null && enemiesInRange.Count > 0)
+        // Aquire target
+        while (target == null && enemiesInRange.Count > 0)
         {
             target = enemiesInRange[enemiesInRange.Count - 1];
 
-            Behaviour halo = (Behaviour)target.GetComponent("Halo");
-            halo.enabled = true;
+            // Enemy might have been destroyed, so remove it from list
+            if (target == null)
+            {
+                enemiesInRange.Remove(target);
+            }
+            else
+            {
+                // Highlight target (temporary)
+                Behaviour halo = (Behaviour)target.GetComponent("Halo");
+                halo.enabled = true;
+            }
+        }
 
+        if (target != null)
+        {
             //animation too look nice
             direction = (target.transform.position - gameObject.transform.position).normalized;
-
             lookRotation = Quaternion.LookRotation(direction);
-
             gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * RotationSpeed);
+
+            // Damage target
+            EnemyUnitController enemyUnit = target.GetComponent<EnemyUnitController>();
+            if (enemyUnit == null)
+            {
+                Debug.LogError("Could not find EnemyUnitController on target.");
+            }
+            else
+            {
+                enemyUnit.DamageUnit(damagePerSecond * Time.deltaTime);
+            }
         }
 
     }
