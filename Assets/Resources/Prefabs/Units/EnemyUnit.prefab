@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  bloodSprayEffect: {fileID: 19896024, guid: 9f07ded80bb8fbb409934e4b4eff9dbd, type: 2}
 --- !u!122 &12205580
 Halo:
   m_ObjectHideFlags: 1

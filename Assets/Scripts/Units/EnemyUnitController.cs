@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemyUnitController : MonoBehaviour {
 
     public float health;
+    public ParticleSystem bloodSprayEffect;
 
     private NavMeshAgent navMeshAgent;
 
@@ -46,6 +47,7 @@ public class EnemyUnitController : MonoBehaviour {
     /// <param name="damage">Amount of Damage</param>
     public void DamageUnit(float damage)
     {
+        Instantiate(bloodSprayEffect, transform.position, transform.rotation);
         health -= damage;
     }
 

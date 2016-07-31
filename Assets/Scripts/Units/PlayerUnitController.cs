@@ -8,6 +8,7 @@ public class PlayerUnitController : MonoBehaviour
 
     public float RotationSpeed;
     public float damagePerSecond;
+    public float fireRate;
 
 
     //To store enemies in range
@@ -15,6 +16,7 @@ public class PlayerUnitController : MonoBehaviour
     private GameObject target;
     private Quaternion lookRotation;
     private Vector3 direction;
+    private float fireTimer;
 
     // Use this for initialization
     void Start()
@@ -24,7 +26,7 @@ public class PlayerUnitController : MonoBehaviour
         target = null;
         lookRotation = new Quaternion();
         direction = new Vector3();
-        damagePerSecond = 20;
+        fireTimer = 0;
     }
 
     // Remove enemy from enemiesInRange
@@ -94,7 +96,12 @@ public class PlayerUnitController : MonoBehaviour
             }
             else
             {
-                enemyUnit.DamageUnit(damagePerSecond * Time.deltaTime);
+                fireTimer += Time.deltaTime;
+                if (fireTimer >= fireRate)
+                {
+                    fireTimer = 0;
+                    enemyUnit.DamageUnit(damagePerSecond * fireRate);
+                }
             }
         }
 
