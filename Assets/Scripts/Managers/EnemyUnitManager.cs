@@ -48,7 +48,7 @@ public class EnemyUnitManager : MonoBehaviour {
         // If we've hit the spawn limit, stop spawning enemy units.
         if (enemyUnitsSpawned >= currentWave.spawnLimit)
         {
-            Debug.Log(string.Format("Spawned {0} units. Stopping spawning.", enemyUnitsSpawned));
+            //Debug.Log(string.Format("Spawned {0} units. Stopping spawning.", enemyUnitsSpawned));
             CancelInvoke("SpawnEnemyUnit");
         }
 

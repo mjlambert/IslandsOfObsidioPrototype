@@ -27,7 +27,8 @@ public class GameManager : MonoBehaviour {
             Debug.LogError("Game UI Manger could not be found.");
         }
 
-        Selected = null;
+        
+        Selected = null;       
 	}
 	
 	// Update is called once per frame
@@ -55,6 +56,11 @@ public class GameManager : MonoBehaviour {
             MoveUnit();
         }
 
+        if (Selected != null)
+        {
+            
+        }
+
     }
 
     void SelectUnit()
@@ -73,16 +79,21 @@ public class GameManager : MonoBehaviour {
             {
                 Debug.Log("Hit with tag: PlayerUnit");
                 Selected = hitInfo.collider.gameObject;
+
+                Behaviour halo = (Behaviour)Selected.GetComponent("Halo");
+                halo.enabled = true;
             }
             else
             {
                 Debug.Log("not working");
-                Selected = null;
+                Selected = null;  
             }
         }
         else
         {
             Debug.Log("No Hit");
+            Behaviour halo = (Behaviour)Selected.GetComponent("Halo");
+            halo.enabled = false;
         }
 
     }
@@ -98,8 +109,11 @@ public class GameManager : MonoBehaviour {
         if (hPlane.Raycast(ray, out distance))
         {
             MovePos = ray.GetPoint(distance);
-        }
+            Debug.Log("Move Position = " + MovePos);
 
+            NavMeshAgent agent = (NavMeshAgent)Selected.GetComponent<NavMeshAgent>();
+            agent.destination = MovePos;
+        }
     }
 }
 
